@@ -1,0 +1,50 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import random
+from sklearn import datasets
+def sigmoid(x):
+    return 1/(1+np.exp(-x))
+def sigmoid_der(x):
+    return sigmoid(x)*(1-sigmoid(x))
+def plot(inputs):
+    plt.plot(inputs, sigmoid(inputs), c="r")
+    plt.show()
+def output(nodes, bias):
+    return sum(nodes) + bias
+def cost(predicted, observed):
+    n = len(predicted)
+    print(sum([(predicted[i]-observed[i])**2 for i in range(n)])/n)
+feature_set, labels = datasets.make_moons(100, noise=0.10)
+labels = labels.reshape(100, 1)
+weights = []
+for i in range(3):
+    weights.append(np.random.rand(4,1))
+print(feature_set)
+print(labels)
+print(weights)
+bias = np.random.rand(1)
+lr = 0.05
+epoch_num = 1
+for i in range(epoch_num):
+    cost = 0
+    for j in range(1):
+        #feed forward
+        zh = weights[0] * feature_set[j][0] + weights[0] * feature_set[j][1]
+        ah = sigmoid(zh)
+        zo = 0
+        print(ah)
+        for k in range(4):
+            zo += weights[2][k][0] * ah[k][0]
+        ao = sigmoid(zo)
+        #----------------------------
+        cost += (ao - labels[j])**2
+    cost = cost / 100
+    #Cost Reduction - Phase 1
+    dCostdAo = (  
+    continue
+
+    
+    
+    
+        
+    
